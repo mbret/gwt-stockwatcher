@@ -4,6 +4,16 @@ body {
     padding: 10px;
 }
 
+table.main-wrapper{
+    width: 100%;
+}
+table .wallet-wrapper{
+    width: 50%;
+}
+table .stocks-wrapper{
+    width: 50%;
+}
+
 /* stock list header row */
 .watchListHeader {
     background-color: #2062B8;

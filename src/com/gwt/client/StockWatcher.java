@@ -47,8 +47,6 @@ public class StockWatcher implements EntryPoint {
     stockWatcherUI = new StockWatcherUI();
     stockWatcherUI.loadStocksList();
     stockWatcherUI.loadActionTable();
-    //grid.setWidget(0,0,verticalStockPanel);
-    //grid.setWidget(0,1,verticalPurchasePanel);
 
     // Setup timer to refresh list automatically.
     Timer refreshTimer = new Timer() {
@@ -146,8 +144,14 @@ public class StockWatcher implements EntryPoint {
         InputDialogBox mDBox = new InputDialogBox( this, actionIndex );
         mDBox.center();
         mDBox.show();
+        // Call purchaseActionCallback from dialog box
     }
 
+    /**
+     * continue the purchasing after the input dialog box
+     * @param actionIndex
+     * @param quantity
+     */
     public void purchaseActionCallback( int actionIndex, int quantity ){
         int row = stockWatcherUI.walletActionFlexTable.getRowCount();
         final StockPrice newStockPrice = new StockPrice( stocks.get(actionIndex), new Double(1), new Double(10));
@@ -167,14 +171,14 @@ public class StockWatcher implements EntryPoint {
 
         // Quantity
         stockWatcherUI.walletActionFlexTable.setText(row, 3, String.valueOf(quantity) );
-        stockWatcherUI.walletActionFlexTable.getCellFormatter().addStyleName(row, 2, "watchListRemoveColumn");
+        stockWatcherUI.walletActionFlexTable.getCellFormatter().addStyleName(row, 3, "watchListRemoveColumn");
 
         // Remove
         Button removeStockPriceButton = new Button("x");
         removeStockPriceButton.addStyleDependentName("remove");
         removeStockPriceButton.addClickHandler(new ClickHandler() {
           public void onClick(ClickEvent event) {
-            removePurchasedAction( newStockPrice );
+            removePurchasedAction(newStockPrice);
           }
         });
         stockWatcherUI.walletActionFlexTable.setWidget(row, 4, removeStockPriceButton);

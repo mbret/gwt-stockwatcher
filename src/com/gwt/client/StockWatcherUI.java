@@ -34,7 +34,8 @@ public class StockWatcherUI {
     walletActionFlexTable.setText(0, 0, "Symbol");
     walletActionFlexTable.setText(0, 1, "Price");
     walletActionFlexTable.setText(0, 2, "Change");
-    walletActionFlexTable.setText(0, 3, "Remove");
+    walletActionFlexTable.setText(0, 3, "Quantity");
+    walletActionFlexTable.setText(0, 4, "Remove");
 
     // Add styles to elements in the stock list table.
     walletActionFlexTable.setCellPadding(6);
